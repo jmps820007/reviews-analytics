@@ -12,8 +12,8 @@ print('檔案讀取完了,總共有', len(data), '筆資料')
 
 
 print(len(data))     #印出data串列的--項目數量
-print(len(data[2]))  #印出data串列項目1的--字元數量
-print(data[2])
+print(len(data[0]))  #印出data串列第一個項目的--字元數量
+print(data[0])
 
 sum_len = 0
 
@@ -22,10 +22,4 @@ for d in data:
 
 print(sum_len)  #data串列的總字元數
 
-avg = 0
-
-avg = sum_len / count
-print(avg)
-#for d in data:
-#    sum_len += len(d)
-#print(sum_len)
+print("留言平均長度為", sum_len / count)
