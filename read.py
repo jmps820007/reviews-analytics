@@ -10,7 +10,6 @@ with open('reviews.txt', 'r') as f:
 total = len(data)
 print('檔案讀取完了,總共有', len(data), '筆資料')
 
-
 print(len(data))     #印出data串列的--項目數量
 print(len(data[0]))  #印出data串列第一個項目的--字元數量
 print(data[0])
@@ -18,7 +17,7 @@ print(data[0])
 sum_len = 0
 
 for d in data:
-    sum_len += len(d)
+sum_len += len(d)
 
 print(sum_len)  #data串列的總字元數
 
@@ -27,16 +26,16 @@ print("留言平均長度為", sum_len / count)
 ##印出字數小於100的留言
 new = []
 for d in data:
-    if len(d) < 100:
-        new.append(d)
+if len(d) < 100:
+    new.append(d)
 print('一共有', len(new), '比留言長度小於100')
 print(new[0])
 
 ##印出提到good的留言
 good = []
 for d in data:
-    if 'good' in d:  #d裡面是否有'good'字串
-        good.append(d)
+if 'good' in d:  #d裡面是否有'good'字串
+    good.append(d)
 print('一共有', len(good), '提到good')
 print(good[0])
 
@@ -53,6 +52,36 @@ print(bad)
 #普通寫法
 bad = []
 for d in data:
-    bad.append('bad' in d)
+bad.append('bad' in d)
 
 print(bad)
+
+# 文字計數
+wc = {} # word_count
+for d in data:
+    words = d.split()
+    for word in words:
+        if word in wc:
+            wc[word] += 1
+        else:
+            wc[word] = 1 # 新增新的key進wc字典
+
+for word in wc:
+    if wc[word] > 1000000:
+        print(word, wc[word])
+
+print(len(wc))
+print(wc['Allen'])
+
+while True:
+    word = input('請問你想查甚麼字: ')
+    if word == 'q':
+        print('感謝使用')
+        break
+    elif word not in wc:
+        print('沒這個字')
+        continue
+    else:
+        print(word, '出現過的次數: ', wc[word])
+
+
